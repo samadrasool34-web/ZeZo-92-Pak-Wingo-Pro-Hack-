@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>ZeZo Wingo Pro Hack · Live</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --header-teal-top: #1FC6B0;
+            --header-teal-mid: #19BFA7;
+            --header-teal-bot: #0FA79A;
+            --card-navy: #224B7A;
+            --main-bg: #0B1E3D;
+            --win-green: #10B981;
+            --loss-red: #EF4444;
+            --big-teal: #1FC6B0;
+            --small-yellow: #FBBF24;
+            --download-purple: #8B5CF6;
+            --download-purple-dark: #7C3AED;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--main-bg);
+            color: #FFFFFF;
+            overflow: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(31, 198, 176, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(34, 75, 122, 0.25) 0%, transparent 40%);
+        }
+
+        .app-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .official-badge {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+
+        .header-section {
+            background: linear-gradient(180deg, var(--header-teal-top) 0%, var(--header-teal-mid) 50%, var(--header-teal-bot) 100%);
+            width: 100%;
+            padding: 45px 20px 40px 20px;
+            border-bottom-left-radius: 45px;
+            border-bottom-right-radius: 45px;
+            text-align: center;
+            position: relative;
+            flex-shrink: 0;
+            overflow: hidden;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Shine effect */
+        .header-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            animation: shine 6s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .main-title {
+            font-size: clamp(1.5rem, 6vw, 1.8rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 12px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        #homeScreen, #gameView {
+            width: 100%;
+            max-width: min(400px, 95%);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #gameView {
+            display: none;
+            height: 100%;
+            position: relative;
+        }
+
+        .game-iframe {
+            width: 100%;
+            height: 70vh;
+            min-height: 450px;
+            border: none;
+            border-radius: 30px;
+            border: 2px solid rgba(31, 198, 176, 0.3);
+            background: #000;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Floating button - attractive with pulse glow */
+        .floating-pred-btn {
+            position: fixed;
+            right: max(20px, 5%);
+            bottom: max(100px, 15vh);
+            width: min(90px, 20vw);
+            height: min(90px, 20vw);
+            background-color: var(--main-bg);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255,255,255,0.3);
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: white;
+            font-weight: 800;
+            line-height: 1.2;
+            text-align: center;
+            padding: 5px;
+            box-shadow: 0 0 20px rgba(31,198,176,0.4);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(31,198,176,0.4); }
+            50% { box-shadow: 0 0 30px rgba(31,198,176,0.8); }
+            100% { box-shadow: 0 0 15px rgba(31,198,176,0.4); }
+        }
+
+        .floating-pred-btn:active {
+            transform: scale(0.95);
+        }
+
+        .pred-btn-prediction, .pred-btn-lastresult {
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            background: rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin: 2px 0;
+            width: 100%;
+        }
+        .pred-btn-fullresult {
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+            font-weight: 800;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        .pred-btn-locked {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        .pred-btn-locked span {
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            display: block;
+            margin-top: 2px;
+        }
+
+        .back-from-game {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 8px;
+            cursor: pointer;
+            z-index: 101;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Modal overlay for password and prediction */
+        #modalOverlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        /* WhatsApp join modal - now dismissible and non-blocking */
+        #whatsappModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3000;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        .whatsapp-modal-content {
+            pointer-events: auto;
+            background: var(--card-navy);
+            border-radius: 25px;
+            padding: 20px 15px;
+            max-width: min(350px, 90%);
+            width: 100%;
+            text-align: center;
+            border: 2px solid var(--header-teal-top);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            position: relative;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .close-whatsapp {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #fff;
+            background: rgba(255,255,255,0.2);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+        .close-whatsapp:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: min(370px, 95%);
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 35px;
+        }
+
+        #passwordCard, #apiView {
+            width: 100%;
+            display: none;
+        }
+
+        .game-card, .password-card, .api-container {
+            background: rgba(34, 75, 122, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 35px;
+            padding: 30px 20px;
+            width: 100%;
+            text-align: center;
+            border: 1.5px solid rgba(31, 198, 176, 0.35);
+            margin: 0 auto;
+        }
+
+        .official-name-tag {
+            color: var(--header-teal-top);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .game-subtitle {
+            font-size: clamp(1.4rem, 6vw, 1.6rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom, #fff, var(--header-teal-top));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--header-teal-top), var(--header-teal-bot));
+            color: var(--main-bg);
+            font-weight: 800;
+            width: 100%;
+            padding: 18px;
+            border-radius: 20px;
+            font-size: clamp(1rem, 4vw, 1.1rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            top: 0;
+            box-shadow: 0 5px 0 #097a70, 0 10px 20px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+
+        .primary-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #097a70, 0 5px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Download button - distinct purple gradient */
+        .download-btn {
+            background: linear-gradient(135deg, var(--download-purple), var(--download-purple-dark));
+            color: white;
+            font-weight: 800;
+            width: 100%;
+            padding: 18px;
+            border-radius: 20px;
+            font-size: clamp(1rem, 4vw, 1.1rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            top: 0;
+            box-shadow: 0 5px 0 #5B21B6, 0 10px 20px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .download-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #5B21B6, 0 5px 10px rgba(0,0,0,0.3);
+        }
+        .download-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .pass-input {
+            background: rgba(0,0,0,0.3);
+            border: 2px solid var(--header-teal-top);
+            border-radius: 15px;
+            padding: 15px;
+            width: 100%;
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        .requirement-container {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            border: 1px dashed rgba(31, 198, 176, 0.4);
+            text-align: right;
+            direction: rtl;
+        }
+
+        .req-text {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        .req-highlight {
+            color: var(--header-teal-top);
+            font-weight: 800;
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .youtube-section {
+            width: 100%;
+            max-width: min(400px, 100%);
+            margin: 20px auto 30px auto;
+            background: rgba(34, 75, 122, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 25px 20px;
+            border: 1.5px solid rgba(31, 198, 176, 0.3);
+        }
+
+        .youtube-heading {
+            font-size: clamp(1.1rem, 4vw, 1.2rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 18px;
+            padding-left: 8px;
+            border-left: 5px solid var(--header-teal-top);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .thumbnail-item {
+            display: flex;
+            flex-direction: column;
+            background: rgba(0,0,0,0.25);
+            border-radius: 20px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.15s ease;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .thumbnail-item:active {
+            transform: scale(0.99);
+            background: rgba(0,0,0,0.4);
+        }
+
+        .video-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-title::before {
+            content: "📺";
+            font-size: 1rem;
+            filter: drop-shadow(0 2px 2px black);
+        }
+
+        .thumbnail-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(145deg, #2a4b76, #102b44);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 2px solid rgba(31, 198, 176, 0.3);
+            background-size: cover;
+            background-position: center;
+            box-shadow: none;
+        }
+
+        /* YouTube-style play button - perfect circle */
+        .youtube-play-icon {
+            width: min(50px, 12vw);
+            height: min(50px, 12vw);
+            background-color: #ff0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .youtube-play-icon::after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-left: clamp(12px, 4vw, 16px) solid white;
+            border-top: clamp(8px, 2.5vw, 10px) solid transparent;
+            border-bottom: clamp(8px, 2.5vw, 10px) solid transparent;
+            margin-left: 3px;
+        }
+
+        .duration-badge {
+            display: none;
+        }
+
+        .info-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 6px solid var(--header-teal-top);
+            border-radius: 20px;
+            padding: 18px 15px;
+            margin-top: 10px;
+            text-align: left;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(31,198,176,0.3);
+        }
+
+        .info-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-title span {
+            font-size: 1.3rem;
+        }
+
+        .info-message {
+            font-size: 0.85rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 5px;
+        }
+
+        .info-highlight {
+            color: var(--header-teal-top);
+            font-weight: 600;
+        }
+
+        /* Prediction styles */
+        .timer-circle {
+            width: min(90px, 25vw);
+            height: min(90px, 25vw);
+            border-radius: 50%;
+            border: 4px solid rgba(31, 198, 176, 0.2);
+            border-top-color: var(--header-teal-top);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px auto;
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+            font-weight: 800;
+            background: rgba(0,0,0,0.2);
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin { 100% { border-top-color: #0FA79A; } }
+
+        .result-display {
+            font-size: clamp(1.5rem, 6vw, 2rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, var(--header-teal-top));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+        }
+        table { width: 100%; margin-top: 15px; font-size: clamp(0.7rem, 3vw, 0.8rem); }
+        th { color: var(--header-teal-top); border-bottom: 1px solid rgba(31,198,176,0.2); padding: 8px; }
+        td { padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+        .corner-back-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 8px;
+            cursor: pointer;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .corner-back-btn:active {
+            transform: scale(0.9);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .corner-back-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: #FFFFFF;
+        }
+
+        .back-link {
+            margin-top: 15px;
+            color: var(--header-teal-top);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            opacity: 0.7;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .social-container {
+            background: rgba(34, 75, 122, 0.95);
+            backdrop-filter: blur(20px);
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            padding: 15px 10px 25px 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center; 
+            border-top: 1.5px solid rgba(31, 198, 176, 0.4);
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .social-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            width: 18%;
+        }
+
+        .icon-box {
+            width: min(44px, 10vw);
+            height: min(44px, 10vw);
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+        }
+
+        .icon-box svg {
+            fill: var(--header-teal-top);
+            width: min(22px, 5vw);
+            height: min(22px, 5vw);
+        }
+
+        .play-game-btn .icon-box {
+            width: min(65px, 15vw);
+            height: min(65px, 15vw);
+            background: linear-gradient(135deg, var(--header-teal-top), var(--header-teal-bot));
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .play-game-btn .icon-box svg {
+            fill: var(--main-bg);
+            width: min(35px, 8vw);
+            height: min(35px, 8vw);
+        }
+
+        .social-label {
+            font-size: clamp(0.5rem, 2vw, 0.55rem);
+            font-weight: 800;
+            color: rgba(255,255,255,0.8);
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .glow-dot {
+            position: absolute;
+            background: var(--header-teal-top);
+            border-radius: 50%;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 1;
+            animation: pulse-dot 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.6); }
+        }
+
+        /* Emoji burst particles */
+        .emoji-particle {
+            position: fixed;
+            font-size: clamp(18px, 6vw, 24px);
+            pointer-events: none;
+            z-index: 9999;
+            animation: burst 2s ease-out forwards;
+        }
+
+        @keyframes burst {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) scale(0.5);
+            }
+        }
+
+        #errorModal {
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0,0,0,0.8); 
+            z-index: 2000; 
+            justify-content: center; 
+            align-items: center;
+        }
+
+        /* Extra small devices */
+        @media (max-width: 380px) {
+            .content-area {
+                padding: 15px 8px;
+            }
+            .game-card, .password-card, .api-container {
+                padding: 20px 15px;
+            }
+            .primary-btn, .download-btn {
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Join Modal (daily) - dismissible and non-blocking -->
+    <div id="whatsappModal">
+        <div class="whatsapp-modal-content">
+            <div class="close-whatsapp" onclick="dismissWhatsAppModal()">✕</div>
+            <h2 class="text-2xl font-bold text-teal-400 mb-4">📢 JOIN OUR WHATSAPP CHANNEL</h2>
+            <p class="text-sm opacity-90 mb-6">Get daily updates, exclusive tips, and special offers. Join now to stay connected!</p>
+            <a id="whatsappChannelLink" href="#" target="_blank" class="primary-btn mb-4" style="display: inline-block; width: auto; padding: 12px 25px; background: #25D366; color: white; box-shadow: none;">📱 JOIN NOW</a>
+            <button onclick="dismissWhatsAppModal()" class="primary-btn" style="background: var(--header-teal-top); box-shadow: none;">⏰ REMIND LATER</button>
+            <p class="text-xs opacity-60 mt-4">You can close this window and join later.</p>
+        </div>
+    </div>
+
+    <div class="app-wrapper" id="appWrapper">
+        <header class="header-section">
+            <div class="official-badge">Verified Official Access</div>
+            <h1 class="main-title">ZeZo Wingo Pro Hack</h1>
+        </header>
+
+        <div class="content-area" id="scrollContainer">
+            <!-- HOME SCREEN (main card + dynamic YouTube + dynamic Giveaway) -->
+            <div id="homeScreen">
+                <div class="game-card">
+                    <span class="official-name-tag">92 Pak Official Hack</span>
+                    <div class="flex justify-center mb-4">
+                        <div class="w-12 h-1 bg-teal-400 rounded-full opacity-40"></div>
+                    </div>
+                    <h2 class="game-subtitle">92 Pak Hack Wingo</h2>
+                    <button onclick="startGame()" class="primary-btn">START PREDICTION</button>
+                    <!-- New Download Application Button -->
+                    <button onclick="downloadApp()" class="download-btn">
+                        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                        DOWNLOAD APPLICATION
+                    </button>
+                    <p class="mt-4 text-[10px] text-teal-400/60 uppercase tracking-widest font-bold">Official Build v2.4</p>
+                </div>
+
+                <!-- DYNAMIC YOUTUBE THUMBNAIL + INFO BOX (filled from Firebase) -->
+                <div class="youtube-section" id="youtubeSection">
+                    <div class="youtube-heading">🎬 LATEST VIDEO</div>
+                    <div class="thumbnail-item" id="youtubeThumbnail">
+                        <span class="video-title" id="videoTitle">Loading...</span>
+                        <div class="thumbnail-placeholder" id="thumbnailContainer">
+                            <div class="youtube-play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="info-box" id="giveawayBox">
+                        <div class="info-title">
+                            <span>🎁</span> <span id="giveawayTitle">DAILY GIVEAWAY</span>
+                        </div>
+                        <div class="info-message" id="giveawayMessage">
+                            Loading...
+                        </div>
+                        <div class="info-message" style="margin-top: 10px; font-size:0.75rem; color: #aad8d1;" id="giveawayFooter">
+                            ⏰ روزانہ رات 8 بجے اپ ڈیٹ ہوتا ہے۔
+                        </div>
+                    </div>
+                    <p class="text-center text-[0.6rem] text-teal-300/70 mt-4 tracking-wider">👇 مزید معلومات کے لیے سکرول کریں</p>
+                </div>
+            </div>
+
+            <!-- GAME VIEW (iframe + floating button) -->
+            <div id="gameView">
+                <div class="back-from-game" onclick="backToHome()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                </div>
+                <iframe id="gameIframe" class="game-iframe" src="https://www.example.com" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+                <!-- Floating prediction button with "Hack Active" -->
+                <div class="floating-pred-btn" onclick="openPredictionModal()">
+                    <!-- Locked state (default) - now shows "Hack Active" -->
+                    <div id="floatingLocked" class="pred-btn-locked">
+                        HACK<span>ACTIVE</span>
+                    </div>
+                    <!-- Normal two-line display (hidden initially) -->
+                    <div id="floatingNormal" style="display: none; width:100%; height:100%; flex-direction:column; align-items:center; justify-content:center;">
+                        <div id="floatingPrediction" class="pred-btn-prediction">?</div>
+                        <div id="floatingLastResult" class="pred-btn-lastresult">?</div>
+                    </div>
+                    <!-- Full result display for 3 seconds (hidden initially) -->
+                    <div id="floatingFullResult" class="pred-btn-fullresult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal overlay for password and prediction -->
+        <div id="modalOverlay">
+            <div class="modal-content">
+                <!-- Password Card -->
+                <div id="passwordCard" class="password-card">
+                    <span class="official-name-tag">Security Required</span>
+                    <h2 class="game-subtitle" style="font-size: 1.2rem; margin-bottom: 20px;">Enter Password</h2>
+                    <input type="password" id="passwordInput" class="pass-input" placeholder="Type Here...">
+                    <button onclick="checkPassword()" class="primary-btn">Unlock Now</button>
+                    
+                    <div class="requirement-container">
+                        <span class="req-highlight">🔐 *ہیک کا پاس ورڈ حاصل کرنے کا طریقہ* 🔐</span>
+                        <div class="req-text" id="requirementText">
+                            👉 ہماری لنک سے نیا اکاؤنٹ بنائیں<br>
+                            👉 اکاؤنٹ میں ڈیپازٹ کریں<br>
+                            👉 ڈیپازٹ کا اسکرین شاٹ ہمارے ساتھ شیئر کریں<br>
+                            <span style="color: var(--header-teal-top); font-weight: 600;">✅ *اس کے بعد آپ کو ہیک کا پاس ورڈ دے دیا جائے گا*</span><br>
+                            <span style="color: #FFD700; font-weight: 600; display: block; margin-top: 8px;">⚠️ *اہم شرط* :</span>
+                            ✔️ *صرف NEW ACCOUNT قابلِ قبول ہے*<br>
+                            ✔️ کم از کم ڈیپازٹ 300 یا اس سے زیادہ ہونا لازمی ہے<br>
+                            <div style="text-align: center; margin-top: 10px; font-size: 0.75rem; opacity: 0.9;">
+                                🚀 *Limited Offer | Serious Users Only* 🚀
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="back-link" onclick="closeModal()">Close</div>
+                </div>
+
+                <!-- Prediction View -->
+                <div id="apiView" class="api-container">
+                    <div class="corner-back-btn" onclick="closeModal()">
+                        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                    </div>
+
+                    <div class="text-[0.7rem] text-teal-400 font-bold uppercase tracking-widest">Live Period</div>
+                    <div id="period" class="text-xl font-bold">--------</div>
+
+                    <div class="timer-circle" id="seconds">--</div>
+
+                    <div class="py-4 bg-black/20 rounded-2xl mb-4">
+                        <div class="text-[0.6rem] uppercase font-bold opacity-60">Predicted Result</div>
+                        <div id="prediction" class="result-display">WAITING...</div>
+                    </div>
+
+                    <div class="overflow-hidden rounded-xl bg-black/10">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Period</th>
+                                    <th>Prediction</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="back-link" onclick="closeModal()">Close</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Bar (dynamic links from Firebase) -->
+        <div class="social-container" id="socialBar">
+            <a href="#" class="social-item" id="contactLink" target="_blank" onclick="handleInteraction()">
+                <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.53.909 3.039 1.389 4.625 1.39 5.25.001 9.522-4.272 9.523-9.523.001-2.546-.994-4.937-2.798-6.742-1.804-1.803-4.195-2.798-6.741-2.799-5.245 0-9.519 4.274-9.521 9.525-.001 1.696.449 3.353 1.303 4.811l-1.01 3.693 3.819-.982z"/></svg></div>
+                <span class="social-label">Contact</span>
+            </a>
+            <a href="#" class="social-item" id="waChannelLink" target="_blank" onclick="handleInteraction()">
+                <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+                <span class="social-label">WA Channel</span>
+            </a>
+            <a href="#" class="social-item play-game-btn" id="registerLink" target="_blank" onclick="handleInteraction()">
+                <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div>
+                <span class="social-label">Register</span>
+            </a>
+            <a href="#" class="social-item" id="ytChannelLink" target="_blank" onclick="handleInteraction()">
+                <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
+                <span class="social-label">YT Channel</span>
+            </a>
+            <a href="#" class="social-item" id="fbPageLink" target="_blank" onclick="handleInteraction()">
+                <div class="icon-box"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                <span class="social-label">FB Page</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal">
+        <div style="background:var(--card-navy); padding:30px; border-radius:20px; border:1px solid #ff4444; text-align:center; max-width:80%;">
+            <h3 style="color:#ff4444; font-weight:800; margin-bottom:15px;">WRONG PASSWORD</h3>
+            <p style="font-size:0.9rem; opacity:0.8; margin-bottom:20px;">Access denied. Please check your password and try again.</p>
+            <button onclick="document.getElementById('errorModal').style.display='none'" class="primary-btn" style="padding:10px 30px; background:#ff4444; box-shadow:none;">OK</button>
+        </div>
+    </div>
+
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
+
+    <script>
+        // Firebase database URL (Realtime DB)
+        const FIREBASE_URL = "https://zezo-wingo-pro-penal-hack-default-rtdb.firebaseio.com";
+
+        // DOM elements
+        const homeScreen = document.getElementById('homeScreen');
+        const gameView = document.getElementById('gameView');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const passwordCard = document.getElementById('passwordCard');
+        const apiView = document.getElementById('apiView');
+        const periodEl = document.getElementById("period");
+        const secondsEl = document.getElementById("seconds");
+        const predictionEl = document.getElementById("prediction");
+        const historyBody = document.getElementById("history");
+        const scrollContainer = document.getElementById("scrollContainer");
+        const passwordInput = document.getElementById('passwordInput');
+        const errorModal = document.getElementById('errorModal');
+        const videoTitle = document.getElementById('videoTitle');
+        const thumbnailContainer = document.getElementById('thumbnailContainer');
+        const youtubeThumbnail = document.getElementById('youtubeThumbnail');
+        const giveawayTitle = document.getElementById('giveawayTitle');
+        const giveawayMessage = document.getElementById('giveawayMessage');
+        const giveawayFooter = document.getElementById('giveawayFooter');
+        const gameIframe = document.getElementById('gameIframe');
+
+        // Floating button elements
+        const floatingLocked = document.getElementById('floatingLocked');
+        const floatingNormal = document.getElementById('floatingNormal');
+        const floatingPrediction = document.getElementById('floatingPrediction');
+        const floatingLastResult = document.getElementById('floatingLastResult');
+        const floatingFullResult = document.getElementById('floatingFullResult');
+        const floatingBtn = document.querySelector('.floating-pred-btn');
+
+        // WhatsApp modal elements
+        const whatsappModal = document.getElementById('whatsappModal');
+        const appWrapper = document.getElementById('appWrapper');
+        const whatsappChannelLink = document.getElementById('whatsappChannelLink');
+
+        // Social links
+        const contactLink = document.getElementById('contactLink');
+        const waChannelLink = document.getElementById('waChannelLink');
+        const registerLink = document.getElementById('registerLink');
+        const ytChannelLink = document.getElementById('ytChannelLink');
+        const fbPageLink = document.getElementById('fbPageLink');
+
+        // Global variable for app password (from config)
+        let APP_PASSWORD = "7474"; // default
+        let GAME_LINK = "https://www.example.com"; // default game link
+        let WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/example"; // default
+        let DOWNLOAD_APP_LINK = "https://example.com/app.apk"; // default download link
+
+        // Timer offset (seconds) - default -5 to remove extra seconds
+        let TIMER_OFFSET = -5; // default
+
+        // Session flag for password
+        let isUnlocked = false;
+
+        // Timer
+        let timerInterval;
+
+        // For period change detection
+        let previousPeriod = null;
+        let resultTimeout = null;
+
+        // Visitor analytics
+        const VISITOR_KEY = 'zezo_visitor_id';
+        let visitorId = localStorage.getItem(VISITOR_KEY);
+        const isNew = !visitorId;
+        if (isNew) {
+            visitorId = 'v_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem(VISITOR_KEY, visitorId);
+        }
+        // Send visit to Firebase
+        fetch(`${FIREBASE_URL}/analytics/visits.json`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                visitorId,
+                timestamp: Date.now(),
+                isNew,
+                userAgent: navigator.userAgent
+            })
+        }).catch(err => console.warn("Analytics error:", err));
+
+        // ----- PREDICTION TRENDS (provided by user) -----
+        const predictionTrends = [
+            ["Small", "Big", "Small", "Big", "Big", "Small", "Small", "Big", "Big", "Small"],
+            ["Small", "Small", "Big", "Small", "Small", "Small", "Small", "Small", "Small", "Big"],
+            ["Small", "Big", "Small", "Small", "Small", "Small", "Big", "Small", "Small", "Big"],
+            ["Small", "Big", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Big"],
+            ["Small", "Big", "Big", "Big", "Small", "Small", "Small", "Big", "Big", "Big"],
+            ["Small", "Small", "Small", "Big", "Big", "Big", "Small", "Big", "Small", "Small"],
+            ["Small", "Small", "Big", "Small", "Big", "Big", "Small", "Small", "Big", "Small"],
+            ["Small", "Big", "Big", "Big", "Big", "Big", "Big", "Big", "Big", "Small"],
+            ["Big", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Small", "Big"],
+            ["Big", "Small", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Big"],
+            ["Big", "Small", "Big", "Small", "Big", "Small", "Big", "Small", "Small", "Big"],
+            ["Big", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Small", "Small"],
+            ["Small", "Big", "Small", "Big", "Small", "Big", "Big", "Big", "Big", "Big"],
+            ["Small", "Big", "Big", "Small", "Big", "Small", "Small", "Small", "Small", "Small"],
+            ["Small", "Big", "Small", "Small", "Small", "Small", "Big", "Big", "Big", "Big"],
+            ["Small", "Small", "Big", "Small", "Big", "Big", "Small", "Small", "Big", "Small"],
+            ["Small", "Big", "Big", "Big", "Big", "Big", "Big", "Big", "Big", "Small"],
+            ["Big", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Small", "Big"],
+            ["Big", "Small", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Big"],
+            ["Big", "Small", "Big", "Small", "Big", "Small", "Big", "Small", "Small", "Big"],
+            ["Big", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Small", "Small"],
+            ["Small", "Big", "Small", "Big", "Small", "Big", "Big", "Big", "Big", "Big"],
+            ["Small", "Big", "Big", "Small", "Big", "Small", "Small", "Small", "Small", "Small"],
+            ["Small", "Big", "Small", "Small", "Small", "Small", "Big", "Big", "Big", "Big"],
+            ["Small", "Small", "Big", "Small", "Small", "Small", "Small", "Small", "Small", "Big"],
+            ["Small", "Big", "Small", "Small", "Small", "Small", "Big", "Small", "Small", "Big"],
+            ["Small", "Big", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Big"],
+            ["Small", "Big", "Big", "Big", "Small", "Small", "Small", "Big", "Big", "Big"],
+            ["Small", "Small", "Small", "Big", "Big", "Big", "Small", "Big", "Small", "Small"],
+            ["Small", "Small", "Big", "Small", "Big", "Big", "Small", "Small", "Big", "Small"],
+            ["Small", "Big", "Big", "Big", "Big", "Big", "Big", "Big", "Big", "Small"],
+            ["Big", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Small", "Big"],
+            ["Big", "Small", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Big"],
+            ["Big", "Small", "Big", "Small", "Big", "Small", "Big", "Small", "Small", "Big"],
+            ["Big", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Small", "Small"],
+            ["Small", "Big", "Small", "Big", "Small", "Big", "Big", "Big", "Big", "Big"],
+            ["Small", "Big", "Big", "Small", "Big", "Small", "Small", "Small", "Small", "Small"],
+            ["Small", "Big", "Small", "Small", "Small", "Small", "Big", "Big", "Big", "Big"],
+            ["Small", "Small", "Big", "Small", "Big", "Big", "Small", "Small", "Big", "Small"],
+            ["Big", "Small", "Small", "Small", "Big", "Big", "Big", "Small", "Small", "Big"]
+        ];
+
+        // Helper: convert number to Big/Small (actual result)
+        function getSize(number) {
+            return (number >= 0 && number <= 4) ? "SMALL" : "BIG";
+        }
+
+        // ----- SMART PREDICTION based on recent history -----
+        function getSmartPrediction(historyList, currentIssue) {
+            if (!historyList || historyList.length < 5) {
+                return getTrendPrediction(currentIssue);
+            }
+            const last5 = historyList.slice(0, 5).map(item => getSize(parseInt(item.number)));
+            const bigCount = last5.filter(s => s === "BIG").length;
+            const last3 = last5.slice(0, 3);
+            if (last3.every(r => r === "BIG")) return "SMALL";
+            if (last3.every(r => r === "SMALL")) return "BIG";
+            if (bigCount >= 3) return "SMALL";
+            if (bigCount <= 2) return "BIG";
+            return getTrendPrediction(currentIssue);
+        }
+
+        // Fallback trend-based prediction (using issue number)
+        function getTrendPrediction(issue) {
+            if (!issue) return "BIG";
+            let issueStr = String(issue);
+            let digits = issueStr.replace(/\D/g, '');
+            if (digits.length === 0) return "BIG";
+            let lastDigits = digits.slice(-6);
+            let num = parseInt(lastDigits, 10);
+            let trendArrayIndex = Math.floor(num / 10) % predictionTrends.length;
+            let position = num % 10;
+            let pred = predictionTrends[trendArrayIndex][position];
+            return pred ? pred.toUpperCase() : "BIG";
+        }
+
+        // Timer function
+        function startTimer(seconds) {
+            clearInterval(timerInterval);
+            secondsEl.innerText = seconds;
+            timerInterval = setInterval(() => {
+                seconds--;
+                if (seconds < 0) seconds = 0;
+                secondsEl.innerText = seconds;
+                if (seconds <= 0) {
+                    clearInterval(timerInterval);
+                }
+            }, 1000);
+        }
+
+        // Emoji burst function
+        function burstEmoji(emoji, count = 20) {
+            if (!floatingBtn) return;
+            const rect = floatingBtn.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'emoji-particle';
+                particle.innerText = emoji;
+                const angle = Math.random() * 2 * Math.PI;
+                const distance = 150 + Math.random() * 150;
+                const dx = Math.cos(angle) * distance;
+                const dy = Math.sin(angle) * distance;
+                particle.style.setProperty('--dx', dx + 'px');
+                particle.style.setProperty('--dy', dy + 'px');
+                particle.style.left = centerX + 'px';
+                particle.style.top = centerY + 'px';
+                particle.style.fontSize = (20 + Math.random() * 20) + 'px';
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    if (particle.parentNode) particle.remove();
+                }, 2000);
+            }
+        }
+
+        // Update floating button to locked state
+        function setFloatingLocked() {
+            floatingLocked.style.display = 'flex';
+            floatingNormal.style.display = 'none';
+            floatingFullResult.style.display = 'none';
+        }
+
+        // Update floating button to normal two-line display
+        function setFloatingNormal(prediction, lastResult) {
+            floatingPrediction.innerText = prediction;
+            floatingPrediction.className = 'pred-btn-prediction';
+            if (prediction === 'BIG') {
+                floatingPrediction.classList.add('text-[#1FC6B0]');
+            } else if (prediction === 'SMALL') {
+                floatingPrediction.classList.add('text-[#FBBF24]');
+            }
+            floatingLastResult.innerText = lastResult;
+            floatingLastResult.className = 'pred-btn-lastresult';
+            if (lastResult === 'WIN') {
+                floatingLastResult.classList.add('text-[#10B981]');
+            } else if (lastResult === 'LOSS') {
+                floatingLastResult.classList.add('text-[#EF4444]');
+            }
+            floatingLocked.style.display = 'none';
+            floatingNormal.style.display = 'flex';
+            floatingFullResult.style.display = 'none';
+        }
+
+        // Show full result for 3 seconds
+        function showFullResult(result) {
+            if (resultTimeout) {
+                clearTimeout(resultTimeout);
+            }
+            floatingFullResult.innerText = result;
+            floatingFullResult.className = 'pred-btn-fullresult';
+            if (result === 'WIN') {
+                floatingFullResult.classList.add('text-[#10B981]');
+                burstEmoji('🤑', 25);
+            } else if (result === 'LOSS') {
+                floatingFullResult.classList.add('text-[#EF4444]');
+                burstEmoji('😢', 25);
+            }
+            floatingLocked.style.display = 'none';
+            floatingNormal.style.display = 'none';
+            floatingFullResult.style.display = 'flex';
+
+            resultTimeout = setTimeout(() => {
+                if (isUnlocked) {
+                    floatingLocked.style.display = 'none';
+                    floatingNormal.style.display = 'flex';
+                    floatingFullResult.style.display = 'none';
+                } else {
+                    setFloatingLocked();
+                }
+                resultTimeout = null;
+            }, 3000);
+        }
+
+        // Fetch live prediction data
+        async function fetchLiveData() {
+            if (!isUnlocked) return;
+
+            try {
+                const [timeRes, historyRes] = await Promise.all([
+                    fetch("https://draw.ar-lottery01.com/WinGo/WinGo_30S.json"),
+                    fetch("https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json")
+                ]);
+
+                const timeData = await timeRes.json();
+                const historyData = await historyRes.json();
+
+                const currentPeriod = timeData?.current?.issueNumber || "--";
+                const endTime = timeData?.current?.endTime;
+                const now = Date.now();
+                let secondsLeft = 0;
+                if (endTime) {
+                    secondsLeft = Math.floor((endTime - now) / 1000) + TIMER_OFFSET;
+                    if (secondsLeft > 30) secondsLeft = 30;
+                    if (secondsLeft < 0) secondsLeft = 0;
+                }
+                periodEl.innerText = currentPeriod;
+                startTimer(secondsLeft);
+
+                const historyList = historyData?.data?.list || [];
+                
+                const currentPrediction = getSmartPrediction(historyList, currentPeriod);
+                predictionEl.innerText = currentPrediction;
+
+                let lastResultText = "WAIT";
+                if (historyList.length > 0) {
+                    const lastItem = historyList[0];
+                    const lastIssue = lastItem.issueNumber;
+                    const lastActual = getSize(parseInt(lastItem.number));
+                    const lastPred = getTrendPrediction(lastIssue);
+                    const isWin = (lastPred === lastActual);
+                    lastResultText = isWin ? "WIN" : "LOSS";
+                }
+
+                if (previousPeriod && previousPeriod !== currentPeriod && historyList.length > 0) {
+                    showFullResult(lastResultText);
+                }
+
+                if (floatingFullResult.style.display !== 'flex') {
+                    setFloatingNormal(currentPrediction, lastResultText);
+                }
+
+                const last10 = historyList.slice(0, 10);
+                historyBody.innerHTML = "";
+                last10.forEach(item => {
+                    const issue = item.issueNumber;
+                    const pastPrediction = getTrendPrediction(issue);
+                    const colorClass = pastPrediction === 'BIG' ? 'text-[#1FC6B0]' : 'text-[#FBBF24]';
+                    historyBody.innerHTML += `
+                        <tr>
+                            <td>${issue}</td>
+                            <td class="font-bold ${colorClass}">${pastPrediction}</td>
+                        </tr>
+                    `;
+                });
+
+                previousPeriod = currentPeriod;
+
+            } catch (error) {
+                console.error("API fetch error:", error);
+                predictionEl.innerText = "ERROR";
+                setFloatingNormal("ERR", "ERR");
+            }
+        }
+
+        // Fetch config from Firebase
+        async function loadConfig() {
+            try {
+                const resp = await fetch(`${FIREBASE_URL}/config.json`);
+                const config = await resp.json();
+                if (!config) return;
+
+                if (config.appPassword) APP_PASSWORD = config.appPassword;
+                if (config.registerGameLink) {
+                    GAME_LINK = config.registerGameLink;
+                    gameIframe.src = GAME_LINK;
+                }
+                if (config.whatsappChannelLink) {
+                    WHATSAPP_CHANNEL_URL = config.whatsappChannelLink;
+                    whatsappChannelLink.href = WHATSAPP_CHANNEL_URL;
+                }
+                if (config.downloadAppLink) {
+                    DOWNLOAD_APP_LINK = config.downloadAppLink;
+                }
+                if (typeof config.timerOffset === 'number') TIMER_OFFSET = config.timerOffset;
+
+                if (config.whatsappNumber) contactLink.href = `https://wa.me/${config.whatsappNumber}`;
+                if (config.whatsappChannelLink) waChannelLink.href = config.whatsappChannelLink;
+                if (config.registerGameLink) registerLink.href = config.registerGameLink;
+                if (config.youtubeChannelLink) ytChannelLink.href = config.youtubeChannelLink;
+                if (config.facebookPageLink) fbPageLink.href = config.facebookPageLink;
+
+                if (config.youtubeVideoTitle) videoTitle.innerText = config.youtubeVideoTitle;
+                if (config.youtubeVideoUrl) youtubeThumbnail.onclick = () => { window.open(config.youtubeVideoUrl, '_blank'); };
+                if (config.youtubeThumbnailUrl) {
+                    thumbnailContainer.style.backgroundImage = `url('${config.youtubeThumbnailUrl}')`;
+                }
+                if (config.dailyGiveawayTitle) giveawayTitle.innerText = config.dailyGiveawayTitle;
+                if (config.dailyGiveawayMessage) giveawayMessage.innerHTML = config.dailyGiveawayMessage.replace(/\n/g, '<br>');
+                if (config.dailyGiveawayFooter) giveawayFooter.innerText = config.dailyGiveawayFooter;
+
+            } catch (e) {
+                console.warn("Failed to load config from Firebase", e);
+            }
+        }
+
+        // Daily WhatsApp join verification (now with dismiss option)
+        function shouldShowWhatsAppModal() {
+            const joinedDate = localStorage.getItem('whatsapp_join_date');
+            const dismissedDate = localStorage.getItem('whatsapp_dismissed_date');
+            const today = new Date().toISOString().split('T')[0];
+            if (joinedDate === today) return false;
+            if (dismissedDate === today) return false;
+            return true;
+        }
+
+        function setWhatsAppJoinedToday() {
+            const today = new Date().toISOString().split('T')[0];
+            localStorage.setItem('whatsapp_join_date', today);
+        }
+
+        function dismissWhatsAppModal() {
+            const today = new Date().toISOString().split('T')[0];
+            localStorage.setItem('whatsapp_dismissed_date', today);
+            whatsappModal.style.display = 'none';
+        }
+
+        function verifyWhatsAppJoin() {
+            setWhatsAppJoinedToday();
+            whatsappModal.style.display = 'none';
+        }
+
+        // Download app function
+        function downloadApp() {
+            handleInteraction();
+            window.open(DOWNLOAD_APP_LINK, '_blank');
+        }
+
+        // Navigation: Start game
+        function startGame() {
+            handleInteraction();
+            homeScreen.style.display = 'none';
+            gameView.style.display = 'block';
+            gameIframe.src = GAME_LINK;
+            if (isUnlocked) {
+                setFloatingNormal("?", "?");
+                if (window.liveInterval) clearInterval(window.liveInterval);
+                window.liveInterval = setInterval(fetchLiveData, 2000);
+                fetchLiveData();
+            } else {
+                setFloatingLocked();
+            }
+            scrollContainer.scrollTop = 0;
+        }
+
+        // Back to home from game
+        function backToHome() {
+            handleInteraction();
+            gameView.style.display = 'none';
+            homeScreen.style.display = 'block';
+            closeModal();
+            if (window.liveInterval) {
+                clearInterval(window.liveInterval);
+                window.liveInterval = null;
+            }
+            setFloatingLocked();
+        }
+
+        // Open prediction modal
+        function openPredictionModal() {
+            handleInteraction();
+            if (isUnlocked) {
+                passwordCard.style.display = 'none';
+                apiView.style.display = 'block';
+                modalOverlay.style.display = 'flex';
+                fetchLiveData();
+                if (window.liveInterval) clearInterval(window.liveInterval);
+                window.liveInterval = setInterval(fetchLiveData, 2000);
+            } else {
+                passwordCard.style.display = 'block';
+                apiView.style.display = 'none';
+                modalOverlay.style.display = 'flex';
+                passwordInput.value = '';
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            modalOverlay.style.display = 'none';
+        }
+
+        // Check password
+        function checkPassword() {
+            const input = passwordInput.value;
+            if (input === APP_PASSWORD) {
+                handleInteraction();
+                isUnlocked = true;
+                passwordCard.style.display = 'none';
+                apiView.style.display = 'block';
+                fetchLiveData();
+                if (window.liveInterval) clearInterval(window.liveInterval);
+                window.liveInterval = setInterval(fetchLiveData, 2000);
+                if (gameView.style.display === 'block') {
+                    setFloatingNormal("?", "?");
+                }
+            } else {
+                handleInteraction();
+                errorModal.style.display = 'flex';
+                passwordInput.value = '';
+            }
+        }
+
+        function handleInteraction() {
+            const sound = document.getElementById('clickSound');
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play().catch(() => {});
+            }
+            if ('vibrate' in navigator) { 
+                navigator.vibrate(40); 
+            }
+        }
+
+        // Decorative glow dots
+        function createGlowDots() {
+            const dotCount = 40; 
+            for (let i = 0; i < dotCount; i++) {
+                let dot = document.createElement('div');
+                dot.className = 'glow-dot';
+                let size = Math.random() * 3 + 1;
+                dot.style.width = size + 'px';
+                dot.style.height = size + 'px';
+                dot.style.top = Math.random() * 100 + 'vh';
+                dot.style.left = Math.random() * 100 + 'vw';
+                dot.style.animationDelay = (Math.random() * 5) + 's';
+                document.body.appendChild(dot);
+            }
+        }
+
+        // On load
+        window.onload = async () => {
+            createGlowDots();
+            await loadConfig();
+
+            if (shouldShowWhatsAppModal()) {
+                whatsappModal.style.display = 'flex';
+            } else {
+                whatsappModal.style.display = 'none';
+            }
+
+            homeScreen.style.display = 'block';
+            gameView.style.display = 'none';
+            modalOverlay.style.display = 'none';
+            setFloatingLocked();
+        };
+    </script>
+</body>
+</html>
